@@ -1,0 +1,24 @@
+source 'https://rubygems.org'
+
+ruby '<%= ruby_version %>'
+
+gem 'rails', '4.1.7'
+gem 'pg',    '0.17.1'
+
+gem 'active_model_serializers', '~> 0.8.2'
+gem 'bcrypt'
+gem 'dotenv-rails'
+gem 'paranoia'
+gem 'rails_admin'
+gem 'sass-rails', '~> 4.0.4'
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+
+group :development do
+  gem 'byebug'
+  gem 'spring'
+end
+
+group :doc do
+  gem 'sdoc',  '~> 0.4.0'
+end

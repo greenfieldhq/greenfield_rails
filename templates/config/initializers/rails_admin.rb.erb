@@ -1,0 +1,26 @@
+RailsAdmin.config do |config|
+  config.main_app_name = ["<%= app_name %>", "BackOffice"]
+
+  config.authorize_with do
+    authenticate_or_request_with_http_basic do |username, password|
+      username == Rails.application.secrets.admin_user && password == Rails.application.secrets.admin_password
+    end
+  end
+
+  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
+
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions 
+    index                         # mandatory
+    new
+    export
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    show_in_app
+  end
+end
