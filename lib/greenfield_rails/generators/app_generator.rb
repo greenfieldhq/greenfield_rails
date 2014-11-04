@@ -55,6 +55,7 @@ module GreenfieldRails
 
     def configure_app
       say 'Configuring app'
+      build :setup_api
       build :setup_secrets
       build :setup_dotfiles
       build :setup_initializers
@@ -63,7 +64,6 @@ module GreenfieldRails
     def remove_generated_files
       build :remove_assets
       build :remove_helpers
-      build :remove_tmp
       build :remove_vendor
     end
 

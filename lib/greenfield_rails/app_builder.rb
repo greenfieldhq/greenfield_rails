@@ -21,6 +21,18 @@ module GreenfieldRails
       copy_file 'staging.rb', 'config/environments/staging.rb'
     end
 
+    def setup_api
+      api_config = <<-RUBY
+
+    # Set to false so we can use rails_admin.
+    # Setting to false will add middleware that rails_admin needs (Flash, Session, etc).
+    config.api_only = false
+RUBY
+      inject_into_file 'config/application.rb',
+        api_config,
+        after: "# config.i18n.default_locale = :de\n"
+    end
+
     def setup_secrets
       copy_file 'secrets.yml', 'config/secrets.yml', force: true
     end
@@ -44,10 +56,6 @@ module GreenfieldRails
       run 'rm -rf app/heplers'
     end
 
-    def remove_tmp
-      run 'rm -rf tmp'
-    end
-
     def remove_vendor
       run 'rm -rf vendor'
     end
@@ -62,10 +70,9 @@ module GreenfieldRails
       copy_file 'user.rb',    'app/models/user.rb',    force: true
 
       run 'mkdir app/controllers/api'
-      copy_file 'api_controller.rb',         'app/controllers/api/api_controller.rb'
+      copy_file 'base_controller.rb',        'app/controllers/api/base_controller.rb'
       copy_file 'sessions_controller.rb',    'app/controllers/api/sessions_controller.rb'
       copy_file 'users_controller.rb',       'app/controllers/api/users_controller.rb'
-      copy_file 'application_controller.rb', 'app/controllers/application_controller.rb', force: true
     end
 
     def setup_routes
