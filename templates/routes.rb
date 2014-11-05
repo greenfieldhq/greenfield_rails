@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :api do
-    resources :users, only: [:show, :create]
+    resources :users, only: [:index, :show, :create]
     resource :session, only: [:create, :destroy]
   end
 end

@@ -1,6 +1,10 @@
 class Api::UsersController < Api::BaseController
   skip_before_action :authenticate_user_from_token!, only: [:create]
 
+  def index
+    render json: User.order(:email)
+  end
+
   def show
     render json: User.find(params[:id])
   end

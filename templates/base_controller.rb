@@ -1,4 +1,6 @@
 class Api::BaseController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+
   attr_reader :current_user
 
   before_action :authenticate_user_from_token!
