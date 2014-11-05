@@ -1,4 +1,4 @@
-class Api::SessionsController < Api::ApiController
+class Api::SessionsController < Api::BaseController
   skip_before_action :authenticate_user_from_token!, only: [:create]
 
   def create
