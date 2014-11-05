@@ -13,7 +13,7 @@ class Api::UsersController < Api::BaseController
     user = User.new(user_params)
 
     if user.save
-      render json: { user_email: user.email, user_token: user.api_keys.create.access_token }, status: 201
+      render json: { user_id: user.id, user_token: user.api_keys.create.access_token }, status: :created
     else
       render json: { errors: user.errors.messages }, status: 422
     end

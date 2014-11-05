@@ -5,7 +5,7 @@ class Api::SessionsController < Api::BaseController
     user = User.find_by_email(params[:email])
 
     if user && user.authenticate(params[:password])
-      render json: { user_email: user.email, user_token: user.api_keys.create.access_token }, status: 201
+      render json: { user_id: user.id, user_token: user.api_keys.create.access_token }, status: :created
     else
       render json: { errors: ['Invalid Email or Password.'] }, status: :unauthorized
     end
