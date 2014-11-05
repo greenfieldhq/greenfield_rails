@@ -21,7 +21,7 @@ class ApiKey < ActiveRecord::Base
   def generate_access_token
     loop do
       access_token = SecureRandom.urlsafe_base64
-      break access_token unless User.exists?(access_token: access_token)
+      break access_token unless ApiKey.exists?(access_token: access_token)
     end
   end
 end
