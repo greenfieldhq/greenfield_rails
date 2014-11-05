@@ -71,6 +71,7 @@ module GreenfieldRails
       say 'Setting up authentication'
       build :generate_authentication
       build :replace_generated_code
+      build :add_serializers
       build :setup_routes
     end
 

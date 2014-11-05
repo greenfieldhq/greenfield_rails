@@ -69,10 +69,13 @@ RUBY
       copy_file 'api_key.rb', 'app/models/api_key.rb', force: true
       copy_file 'user.rb',    'app/models/user.rb',    force: true
 
-      run 'mkdir app/controllers/api'
-      copy_file 'base_controller.rb',        'app/controllers/api/base_controller.rb'
-      copy_file 'sessions_controller.rb',    'app/controllers/api/sessions_controller.rb'
-      copy_file 'users_controller.rb',       'app/controllers/api/users_controller.rb'
+      copy_file 'base_controller.rb',     'app/controllers/api/base_controller.rb'
+      copy_file 'sessions_controller.rb', 'app/controllers/api/sessions_controller.rb'
+      copy_file 'users_controller.rb',    'app/controllers/api/users_controller.rb'
+    end
+
+    def add_serializers
+      copy_file 'user_serializer.rb', 'app/serializers/user_serializer.rb'
     end
 
     def setup_routes
