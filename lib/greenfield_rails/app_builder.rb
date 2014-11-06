@@ -45,6 +45,9 @@ RUBY
     def setup_initializers
       template  'rails_admin.rb.erb', 'config/initializers/rails_admin.rb'
       copy_file 'sidekiq.rb', 'config/initializers/sidekiq.rb'
+      comment_lines 'config/initializers/wrap_parameters.rb', /^ActiveSupport/
+      comment_lines 'config/initializers/wrap_parameters.rb', /^\s/
+      comment_lines 'config/initializers/wrap_parameters.rb', /^end/
     end
 
     def remove_assets
