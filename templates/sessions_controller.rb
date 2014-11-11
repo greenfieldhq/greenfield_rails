@@ -16,6 +16,6 @@ class Api::SessionsController < Api::BaseController
     token, options = ActionController::HttpAuthentication::Token.token_and_options(request)
     api_key = current_user.active_api_key(token)
     api_key.destroy
-    render json: api_key, status: 201
+    head :no_content
   end
 end

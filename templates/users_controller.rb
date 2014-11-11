@@ -15,7 +15,7 @@ class Api::UsersController < Api::BaseController
     if user.save
       render json: { user_id: user.id, user_token: user.api_keys.create.access_token }, status: :created
     else
-      render json: { errors: user.errors.messages }, status: 422
+      render json: { errors: user.errors.messages }, status: :unprocessable_entity
     end
   end
 
